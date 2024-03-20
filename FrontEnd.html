@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple or Tomato Classifier</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Apple or Tomato Classifier</h1>
+    <p>Upload an image to classify it as an apple or tomato:</p>
+    <input type="file" id="image-upload" accept=".jpg, .jpeg, .png">
+    <button id="predict-button">Predict</button>
+    <br>
+    <p id="prediction"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#predict-button").click(function() {
+                var imageFile = $("#image-upload")[0].files[0];
+                if (imageFile) {
+                    var formData = new FormData();
+                    formData.append("image", imageFile);
+
+                    $.ajax({
+                        url: "/predict",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            if (response.error) {
+                                $("#prediction").text(response.error);
+                            } else {
+                                $("#prediction").text("Predicted Class: " + response.class);
+                            }
+                        },
+                        error: function(error) {
+                            console.error("Error:", error);
+                            $("#prediction").text("An error occurred during prediction.");
+                        }
+                    });
+                } else {
+                    $("#prediction").text("Please select an image file to upload.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
