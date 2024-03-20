@@ -31,11 +31,24 @@ Dataset Drive Link : https://drive.google.com/drive/folders/1S43n6TSyz2LjuaRDvv9
 ### Additional Notes
 - Participants are strictly prohibited from copying code from other PRs. Plagiarism will result in disqualification from the competition.
 
-## Getting Started
 1. Fork this repository to your GitHub account.
 2. Clone the forked repository to your local machine.
+
+   ```bash
+   git clone https://github.com/your-username/redemption-competition.git
+   ```
 3. Create a new branch for each issue you are working on.
+
+    ```bash
+   git checkout -b your-branch-name
+    ```
 4. Work on the issue, commit your changes, and push to your forked repository.
+
+    ```bash
+    git add .
+    git commit -m "Descriptive commit message"
+    git push origin your-branch-name
+    ```
 5. Create a Pull Request to the main repository for review and evaluation.
 
 ## Contact Us
